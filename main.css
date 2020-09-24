@@ -1,0 +1,25 @@
+body {
+  background-color: black;
+}
+
+button:focus {outline:0;} /*disable button border when clicked*/
+
+.grid-container {
+  justify-content: center;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px;
+  background-color: black;
+  /*padding: 10px;*/
+}
+
+.grid-item {
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  /*width: 50px;
+  height: 50px;*/
