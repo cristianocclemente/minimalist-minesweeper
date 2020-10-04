@@ -6,11 +6,13 @@ button:focus {outline:0;} /*disable button border when clicked*/
 
 .grid-container {
   justify-content: center;
-  display: grid;
+  /*display: grid;
   grid-gap: 10px;
   grid-template-columns: 50px 50px 50px;
-  grid-template-rows: 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px;*/
   background-color: black;
+  width: 300px;
+  height: 300px;
   /*padding: 10px;*/
 }
 
@@ -20,6 +22,45 @@ button:focus {outline:0;} /*disable button border when clicked*/
   border-radius: 5px;
   font-size: 30px;
   text-align: center;
-  color: white;
-  /*width: 50px;
-  height: 50px;*/
+  color: black;
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
+}
+
+.zero {
+  background-color: grey;
+  color: grey;
+}
+
+.one {
+  color: blue;
+}
+
+.two {
+  color: green;
+}
+
+.three {
+  color: red;
+}
+
+.four {
+  color: purple;
+}
+
+.five {
+  color: maroon;
+}
+
+.six {
+  color: turquoise;
+}
+
+.seven {
+  color: black;
+}
+
+.eight {
+  color: gray;
+}
