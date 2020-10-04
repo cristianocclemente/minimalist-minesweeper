@@ -1,0 +1,92 @@
+body {
+  background-color: #121212;
+}
+
+button:focus {outline:0;} /*disable button border when clicked*/
+
+.board {
+  justify-content: center;
+  background-color: #121212;
+  width: 300px;
+  height: 300px;
+}
+
+.board-cell {
+  background-color: #BB86FC;
+  border: 2px solid #BB86FC;
+  border-radius: 5px;
+  text-align: center;
+  font: 400 30px Helvetica;
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
+}
+
+.hidden {
+  background-color: #BB86FC;
+  color: #BB86FC;
+  /*background-image: 'none';*/
+}
+
+.flagged {
+  background-image: url('../img/flag.png');
+  color: transparent;
+  /*font-size: 0;*/
+}
+
+.wrong-flag {
+  background-image: url('../img/wrong_flag.png');
+  color: transparent;
+}
+
+.mine:not(.hidden):not(.flagged) {
+  background-color: red;
+  border: red;
+  background-image: url('../img/mine.png');
+}
+
+.zero:not(.hidden):not(.flagged):not(.wrong-flag) {
+  background-color: #362940;
+  border: #362940;
+  color: transparent;
+}
+
+.one:not(.hidden):not(.flagged):not(.wrong-flag) {
+  /*color: blue;*/
+  color: white;
+}
+
+.two:not(.hidden):not(.flagged):not(.wrong-flag) {
+  /*color: green;*/
+  color: white;
+}
+
+.three:not(.hidden):not(.flagged):not(.wrong-flag) {
+  /*color: red;*/
+  color: white;
+}
+
+.four:not(.hidden):not(.flagged):not(.wrong-flag) {
+  /*color: purple;*/
+  color: white;
+}
+
+.five:not(.hidden):not(.flagged):not(.wrong-flag) {
+  /*color: maroon;*/
+  color: white;
+}
+
+.six:not(.hidden):not(.flagged):not(.wrong-flag) {
+  /*color: turquoise;*/
+  color: white;
+}
+
+.seven:not(.hidden):not(.flagged):not(.wrong-flag) {
+  /*color: black;*/
+  color: white;
+}
+
+.eight:not(.hidden):not(.flagged):not(.wrong-flag) {
+  /*color: gray;*/
+  color: white;
+}
