@@ -9,6 +9,8 @@ button:focus {outline:0;} /*disable button border when clicked*/
   background-color: #121212;
   width: 300px;
   height: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .board-cell {
@@ -89,4 +91,27 @@ button:focus {outline:0;} /*disable button border when clicked*/
 .eight:not(.hidden):not(.flagged):not(.wrong-flag) {
   /*color: gray;*/
   color: white;
+}
+
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.overlay-text {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  font: 400 60px Helvetica;
+  color: white;
+  transform: translate(-50%,-100%);
+  -ms-transform: translate(-50%,-50%);
 }

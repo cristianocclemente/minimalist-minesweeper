@@ -1,5 +1,5 @@
 document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
-document.addEventListener("DOMContentLoaded", function () { startGame() });
+document.addEventListener("DOMContentLoaded", function () { newGame() });
 
 //var difficulty = 'begginer';
 var boardHeight = 9;
@@ -9,7 +9,9 @@ var numberBombs = 10;
 var rightFlags = 0;
 var wrongFlags = 0;
 
-function startGame() {
+function newGame() {
+  winScreenOff();
+  loseScreenOff();
   createBoard();
   populateBoard();
 }
@@ -17,6 +19,7 @@ function startGame() {
 function createBoard() {
   //draw board
   let tableRef = document.getElementsByClassName('board')[0];
+  tableRef.innerHTML = "";
   for (i = 1; i <= boardWidth; i++) {
     let newRow = tableRef.insertRow();
     for (j = 1; j <= boardHeight; j++) {
@@ -98,7 +101,15 @@ function gameLose() {
 
     }
   }
-  //alert('Game Over!');
+  loseScreenOn();
+}
+
+function loseScreenOn() {
+  document.getElementById("lose").style.display = "block";
+}
+
+function loseScreenOff() {
+  document.getElementById("lose").style.display = "none";
 }
 
 function rightClick(id) {
@@ -144,7 +155,15 @@ function colOf(id) { return parseInt(id.charAt(1)); }
 function toId(i, j) { return i.toString() + j.toString(); }
 
 function gameWin() {
-  alert('You Won!');
+  winScreenOn();
+}
+
+function winScreenOn() {
+  document.getElementById("win").style.display = "block";
+}
+
+function winScreenOff() {
+  document.getElementById("win").style.display = "none";
 }
 
 function calcNum(id) {
