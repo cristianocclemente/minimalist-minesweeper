@@ -1,4 +1,4 @@
-![screenshot](/readme/screenshot.png)
+[![screenshot](/readme/screenshot.png)](https://cristiano-clemente.github.io/minimalist-minesweeper/)
 
 # a minimalist minesweeper clone
 
