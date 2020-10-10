@@ -4,24 +4,33 @@ document.addEventListener("DOMContentLoaded", function () { newGame() });
 //var difficulty = 'begginer';
 var boardHeight = 9;
 var boardWidth = 9;
-var board = [];
 var numberBombs = 10;
-var rightFlags = 0;
-var wrongFlags = 0;
+var rightFlags;
+var wrongFlags;
+var gameWin;
+var gameLose;
 
 function newGame() {
-  winScreenOff();
-  loseScreenOff();
+  initGame();
   createBoard();
   populateBoard();
 }
 
+function initGame() {
+  rightFlags = 0;
+  wrongFlags = 0;
+  gameWin = false;
+  gameLose = false;
+}
+
 function createBoard() {
   //draw board
-  let tableRef = document.getElementsByClassName('board')[0];
-  tableRef.innerHTML = "";
+  let body = document.getElementsByTagName('body')[0];
+  body.innerHTML = "";
+  let tbl = document.createElement('table');
+  tbl.classList.add("board");
   for (i = 1; i <= boardWidth; i++) {
-    let newRow = tableRef.insertRow();
+    let newRow = tbl.insertRow();
     for (j = 1; j <= boardHeight; j++) {
       let btt = document.createElement('button');
       btt.type = "button";
@@ -31,6 +40,7 @@ function createBoard() {
       let newCell = newRow.insertCell(j - 1);
       newCell.appendChild(btt);
     }
+    body.append(tbl);
   }
 
   //config btt click
@@ -74,13 +84,17 @@ function rndInt(min, max) {
 }
 
 function updateCell(e) {
+  console.log("rightFlags:" + rightFlags);
+  console.log("wrongFlags:" + wrongFlags);
+  console.log("numberBombs:" + numberBombs);
   if (e.type == 'click') { leftClick(this.id); }
   else if (e.type == 'contextmenu') { rightClick(this.id); }
 }
 
 function leftClick(id) {
-  if (isHidden(id)) {
-    if (isMine(id)) { gameLose(); }
+  if (gameWin || gameLose) { newGame(); }
+  else if (isHidden(id)) {
+    if (isMine(id)) { loseGame(); }
     else { showCell(id); }
   }
 }
@@ -93,7 +107,7 @@ function isZero(id) { return document.getElementById(id).classList.contains("zer
 
 function isFlagged(id) { return document.getElementById(id).classList.contains("flagged"); }
 
-function gameLose() {
+function loseGame() {
   for (let i = 1; i <= boardWidth; i++) {
     for (let j = 1; j <= boardHeight; j++) {
       if (isMine(toId(i, j)) && !isFlagged(toId(i, j))) { unhideCell(toId(i, j)); }
@@ -101,15 +115,7 @@ function gameLose() {
 
     }
   }
-  loseScreenOn();
-}
-
-function loseScreenOn() {
-  document.getElementById("lose").style.display = "block";
-}
-
-function loseScreenOff() {
-  document.getElementById("lose").style.display = "none";
+  gameLose = true;
 }
 
 function rightClick(id) {
@@ -122,7 +128,7 @@ function rightClick(id) {
     hideCell(id);
     if (isMine(id)) { rightFlags--; } else { wrongFlags--; }
   }
-  if (rightFlags == numberBombs && wrongFlags == 0) { gameWin(); }
+  if (rightFlags == numberBombs && wrongFlags == 0) { winGame(); }
 }
 
 function hideCell(id) { document.getElementById(id).classList.add("hidden"); }
@@ -154,16 +160,8 @@ function colOf(id) { return parseInt(id.charAt(1)); }
 
 function toId(i, j) { return i.toString() + j.toString(); }
 
-function gameWin() {
-  winScreenOn();
-}
-
-function winScreenOn() {
-  document.getElementById("win").style.display = "block";
-}
-
-function winScreenOff() {
-  document.getElementById("win").style.display = "none";
+function winGame() {
+  gameWin = true;
 }
 
 function calcNum(id) {
